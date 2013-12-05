@@ -9,12 +9,18 @@
 #include "Bounce.h"
 
 
-Bounce::Bounce(uint8_t pin,unsigned long interval_millis)
+Bounce::Bounce()
 {
+}
+
+void Bounce::setPin(uint8_t pin) {
+	this->pin = pin;
+	state = digitalRead(pin);
+}
+
+void Bounce::setInterval(unsigned long interval_millis) {
 	interval(interval_millis);
 	previous_millis = millis();
-	state = digitalRead(pin);
-    this->pin = pin;
 }
 
 

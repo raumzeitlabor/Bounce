@@ -35,7 +35,9 @@ class Bounce
 
 public:
 	// Initialize
-  Bounce(uint8_t pin, unsigned long interval_millis ); 
+  Bounce();
+  void setInterval(unsigned long interval_millis);
+  void setPin(uint8_t pin);
 	// Sets the debounce interval
   void interval(unsigned long interval_millis); 
 	// Updates the pin

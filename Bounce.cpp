@@ -45,6 +45,8 @@ int Bounce::update()
         return stateChanged = 1;
     }
 
+	oldstate_millis = millis() - previous_millis;
+
      // We need to rebounce, so simulate a state change
      
 	if ( rebounce_millis && (millis() - previous_millis >= rebounce_millis) ) {
@@ -62,6 +64,9 @@ unsigned long Bounce::duration()
   return millis() - previous_millis;
 }
 
+unsigned long Bounce::previousDuration () {
+	return oldstate_millis;
+}
 
 int Bounce::read()
 {

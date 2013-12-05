@@ -52,6 +52,8 @@ public:
   void write(int new_state);
     // Returns the number of milliseconds the pin has been in the current state
   unsigned long duration();
+  // Returns the number of milliseconds prior the state change. Useful to get the press duration when using fallingEdge.
+  unsigned long previousDuration();
   // The risingEdge method is true for one scan after the de-bounced input goes from off-to-on.
 	bool risingEdge();
   // The fallingEdge  method it true for one scan after the de-bounced input goes from on-to-off. 
@@ -59,7 +61,7 @@ public:
   
 protected:
   int debounce();
-  unsigned long  previous_millis, interval_millis, rebounce_millis;
+  unsigned long  previous_millis, interval_millis, rebounce_millis, oldstate_millis;
   uint8_t state;
   uint8_t pin;
   uint8_t stateChanged;
